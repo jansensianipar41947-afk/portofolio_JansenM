@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jansen Marcell Brian Sianipar, S.Kom. | Data Scientist & Data Analyst Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for Interactive Data Visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            900: '#0F172A',
+                            800: '#1E293B',
+                            700: '#334155',
+                        },
+                        steel: {
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                        },
+                        emerald: {
+                            500: '#10B981',
+                            600: '#059669',
+                        },
+                        slatebg: '#F8F9FA'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+    </style>
+</head>
+<body class="bg-slatebg text-slate-800 font-sans antialiased selection:bg-steel-500 selection:text-white custom-scrollbar">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md z-40 border-b border-slate-200 transition-all duration-200" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-2 group">
+                    <div class="w-9 h-9 rounded-lg bg-navy-900 text-white flex items-center justify-center font-mono font-bold text-lg group-hover:bg-steel-600 transition-colors">
+                        JS
+                    </div>
+                    <span class="font-bold text-slate-900 text-base sm:text-lg tracking-tight">Jansen Sianipar<span class="text-steel-500">.</span></span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#about" class="hover:text-steel-600 transition-colors">About</a>
+                    <a href="#skills" class="hover:text-steel-600 transition-colors">Skills Matrix</a>
+                    <a href="#projects" class="hover:text-steel-600 transition-colors">Projects</a>
+                    <a href="#live-demo" class="hover:text-steel-600 transition-colors flex items-center gap-1.5 text-steel-600 font-semibold bg-steel-50 px-2.5 py-1 rounded-md border border-steel-200">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Live Demo
+                    </a>
+                    <a href="#experience" class="hover:text-steel-600 transition-colors">Experience</a>
+                    <a href="#contact" class="hover:text-steel-600 transition-colors">Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <button onclick="openCvModal()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-sm transition-all transform active:scale-95">
+                        <i data-lucide="download" class="w-4 h-4">="download"></i>
+                        <span>Download CV</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-3">
+            <a href="#about" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">About</a>
+            <a href="#skills" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Skills Matrix</a>
+            <a href="#projects" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Featured Projects</a>
+            <a href="#live-demo" class="block px-3 py-2 rounded-md text-steel-600 font-semibold bg-steel-50">Interactive Demo</a>
+            <a href="#experience" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Experience & Education</a>
+            <a href="#contact" class="block px-3 py-2 rounded-md text-slate-700 font-medium hover:bg-slate-50">Contact</a>
+            <div class="pt-2">
+                <button onclick="openCvModal()" class="w-full flex justify-center items-center gap-2 px-4 py-2.5 rounded-lg bg-navy-900 text-white text-sm font-semibold">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Download CV (ATS Resume)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="pt-28 pb-16 md:pt-36 md:pb-24 bg-gradient-to-b from-slate-100/70 via-slatebg to-slatebg border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left: Profile Info -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                        <span>Open for Data Analyst & Scientist Roles</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl font-extrabold text-navy-900 tracking-tight leading-tight">
+                        Jansen Marcell Brian Sianipar, <span class="text-steel-600 font-mono text-2xl sm:text-4xl">S.Kom.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl font-semibold text-slate-700 leading-snug">
+                        Data Scientist & Data Analyst
+                        <span class="block text-steel-600 text-base sm:text-lg font-normal mt-1">
+                            Specializing in Deep Learning (LSTM/GRU), Time-Series Forecasting & IoT Integration
+                        </span>
+                    </p>
+
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
+                        Computer Science Graduate from Universitas Nurtanio Bandung with a <strong>3.68 GPA</strong>. Proven expertise in data cleaning, exploratory data analysis (EDA), and predictive modeling using deep learning algorithms. Skilled in translating complex IoT time-series datasets into actionable business intelligence.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <a href="#projects" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-sm font-semibold shadow-lg shadow-navy-900/10 transition-all hover:shadow-steel-500/20 active:scale-95">
+                            <i data-lucide="folder-kanban" class="w-4 h-4"></i>
+                            <span>Explore Portfolio Projects</span>
+                        </a>
+                        <a href="#live-demo" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-800 text-sm font-semibold border border-slate-300 shadow-sm transition-all active:scale-95">
+                            <i data-lucide="bar-chart-2" class="w-4 h-4 text-steel-600"></i>
+                            <span>View Model Demo</span>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="p-3 rounded-xl bg-white text-slate-700 hover:text-steel-600 border border-slate-300 shadow-sm transition-colors" title="LinkedIn Profile">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="p-3 rounded-xl bg-white text-slate-700 hover:text-steel-600 border border-slate-300 shadow-sm transition-colors" title="GitHub Repositories">
+                            <i data-lucide="github" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Quick Stats & Highlights Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-navy-900 text-white rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-navy-800">
+                        <!-- Decorative background glow -->
+                        <div class="absolute -right-12 -top-12 w-40 h-40 bg-steel-500/20 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="relative z-10 space-y-6">
+                            <div class="flex justify-between items-center border-b border-navy-700 pb-4">
+                                <div>
+                                    <span class="text-xs font-mono text-slate-400 uppercase tracking-widest">Academic Distinction</span>
+                                    <h3 class="text-lg font-bold text-white mt-0.5">S.Kom. Informatics Eng.</h3>
+                                </div>
+                                <span class="px-3 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono font-bold text-sm">
+                                    GPA 3.68
+                                </span>
+                            </div>
+
+                            <!-- Metrics Grid -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Model Accuracy</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">85.3%</div>
+                                    <span class="text-[11px] text-slate-400">ISPU Classification</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">RAM Efficiency</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-steel-500 mt-1">5.91 MB</div>
+                                    <span class="text-[11px] text-slate-400">GRU On-Edge Deployment</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Dataset Size</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">3,557</div>
+                                    <span class="text-[11px] text-slate-400">IoT Cleaned Sequences</span>
+                                </div>
+                                <div class="bg-navy-800/80 rounded-xl p-4 border border-navy-700/60">
+                                    <span class="text-xs text-slate-400 font-mono">Certifications</span>
+                                    <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1">3+</div>
+                                    <span class="text-[11px] text-slate-400">Cisco & TOEFL ITP</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-navy-800/40 rounded-xl p-3.5 border border-navy-700/40 text-xs text-slate-300 flex items-center gap-3">
+                                <i data-lucide="cpu" class="w-8 h-8 text-steel-500 flex-shrink-0"></i>
+                                <span>Experienced in deploying deep learning models to low-memory microcontrollers (NodeMCU ESP8266).</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">HR Professional Overview</h2>
+                <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Data Analyst & Data Scientist Profile</p>
+                <div class="w-12 h-1 bg-steel-500 mx-auto mt-3 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Data Analytics & Cleaning -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-steel-500/10 text-steel-600 flex items-center justify-center mb-5">
+                        <i data-lucide="database-zap" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Data Processing & EDA</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Proficient in cleaning noisy dataset distributions, outlier removal (Gaussian Noise injection), missing value interpolation, and Min-Max scaling for high-dimensional time-series data.
+                    </p>
+                </div>
+
+                <!-- Card 2: Deep Learning & Machine Learning -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-5">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Predictive Modeling</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Strong grasp of Recurrent Neural Networks (LSTM & GRU) and Ensemble ML (Random Forest). Hands-on experience with Grid Search hyperparameter optimization for minimal error rates.
+                    </p>
+                </div>
+
+                <!-- Card 3: Business & IoT Integration -->
+                <div class="bg-slatebg rounded-2xl p-6 border border-slate-200 hover:border-steel-500/40 transition-all shadow-sm">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900/10 text-navy-900 flex items-center justify-center mb-5">
+                        <i data-lucide="line-chart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-navy-900 mb-2">Business & IoT Value</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Experienced in connecting real-time hardware telemetry (PMS5003T laser sensors via HTTP API) to analytical dashboards for strategic environment and business monitoring.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS MATRIX SECTION -->
+    <section id="skills" class="py-16 md:py-20 bg-slatebg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Technical Competencies</h2>
+                    <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Structured Skill Matrix</p>
+                </div>
+                <p class="text-slate-500 text-sm mt-2 md:mt-0">Categorized for fast ATS & Recruiter screening</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Skill Group 1: Data Science & ML -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="bar-chart-3" class="w-4 h-4 text-steel-600"></i>
+                        <span>Data Analytics & ML</span>
+                    </h3>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Python (Pandas, NumPy)</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Scikit-Learn</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Random Forest Ensemble</span>
+                            <span class="text-steel-600 font-mono font-semibold">Proficient</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Data Cleaning & Scalers</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Microsoft Excel & Data Entry</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Group 2: Deep Learning & Time-Series -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="network" class="w-4 h-4 text-steel-600"></i>
+                        <span>Deep Learning & Forecasting</span>
+                    </h3>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">TensorFlow & Keras API</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">LSTM & GRU Architectures</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Grid Search Hyperparameter</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Gaussian Noise Augmentation</span>
+                            <span class="text-steel-600 font-mono font-semibold">Proficient</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Confusion Matrix Metrics</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Group 3: IoT & Microcontrollers -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="cpu" class="w-4 h-4 text-steel-600"></i>
+                        <span>IoT & Edge Computing</span>
+                    </h3>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">C++ / Arduino IDE</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">NodeMCU ESP8266</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">PMS5003T Laser Sensors</span>
+                            <span class="text-steel-600 font-mono font-semibold">Proficient</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">ThingSpeak Cloud API</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">On-Edge Memory Optimization</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Group 4: Tools & Professional Competencies -->
+                <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-navy-900 text-base flex items-center gap-2 mb-4">
+                        <i data-lucide="shield-check" class="w-4 h-4 text-steel-600"></i>
+                        <span>Tools & Security</span>
+                    </h3>
+                    <div class="space-y-2.5 text-xs">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Git & Version Control</span>
+                            <span class="text-steel-600 font-mono font-semibold">Proficient</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Ethical Hacking Basics</span>
+                            <span class="text-slate-600 font-mono font-semibold">Certified</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Matplotlib & Visualization</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">English Communication</span>
+                            <span class="text-steel-600 font-mono font-semibold">TOEFL ITP</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-700 font-medium">Structured Problem Solving</span>
+                            <span class="text-emerald-600 font-mono font-semibold">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Portfolio Showcase</h2>
+                <p class="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">Featured Data Science Projects</p>
+                <p class="text-slate-600 text-sm mt-2">Demonstrating real-world problem solving, modeling accuracy, and execution.</p>
+            </div>
+
+            <!-- Project 1: THESIS MAIN FEATURE -->
+            <div class="bg-slatebg border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12">
+                    
+                    <!-- Left: Content & Metrics -->
+                    <div class="lg:col-span-7 p-6 sm:p-10 flex flex-col justify-between space-y-6">
+                        <div>
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                <span class="px-2.5 py-1 rounded-md bg-navy-900 text-white text-[11px] font-mono font-semibold">S1 Thesis Project</span>
+                                <span class="px-2.5 py-1 rounded-md bg-steel-500/10 text-steel-600 border border-steel-500/20 text-[11px] font-medium">Deep Learning</span>
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 text-[11px] font-medium">IoT Hardware</span>
+                            </div>
+
+                            <h3 class="text-xl sm:text-2xl font-bold text-navy-900 leading-snug">
+                                Air Pollution Time-Series Forecasting: LSTM vs GRU with Hyperparameter Grid Search
+                            </h3>
+
+                            <p class="text-slate-600 text-sm mt-3 leading-relaxed">
+                                Comparative study analyzing predictive efficiency between LSTM and GRU algorithms on 3,557 custom micro-scale IoT particulate datasets (PM2.5 & PM10) collected at Universitas Nurtanio campus parking areas.
+                            </p>
+
+                            <!-- Key Results Grid -->
+                            <div class="grid grid-cols-3 gap-3 my-6">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">LSTM Reg. Accuracy</span>
+                                    <div class="text-base sm:text-lg font-bold text-navy-900 mt-0.5">RMSE 17.76</div>
+                                    <span class="text-[10px] text-slate-500">MAE 10.13 µg/m³</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">GRU RAM Usage</span>
+                                    <div class="text-base sm:text-lg font-bold text-emerald-600 mt-0.5">5.91 MB</div>
+                                    <span class="text-[10px] text-slate-500">vs LSTM 34.77 MB</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200 text-center">
+                                    <span class="text-[10px] font-mono text-slate-500 uppercase">ISPU Classification</span>
+                                    <div class="text-base sm:text-lg font-bold text-steel-600 mt-0.5">85.30%</div>
+                                    <span class="text-[10px] text-slate-500">F1-Score 85.37%</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Stack Pills -->
+                            <div class="flex flex-wrap gap-2 pt-1">
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">Python</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">TensorFlow/Keras</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">Grid Search</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">ESP8266 + PMS5003T</span>
+                                <span class="px-2.5 py-1 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono">ThingSpeak API</span>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-slate-200/80">
+                            <button onclick="openProjectModal()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold transition-all">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                <span>Read Full Case Study</span>
+                            </button>
+                            <a href="#live-demo" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-xs font-semibold transition-all">
+                                <i data-lucide="play" class="w-4 h-4 text-emerald-600"></i>
+                                <span>Interactive Data Demo</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual Summary Box -->
+                    <div class="lg:col-span-5 bg-navy-900 p-6 sm:p-8 text-white flex flex-col justify-between border-t lg:border-t-0 lg:border-l border-navy-800 relative">
+                        <div>
+                            <div class="flex justify-between items-center mb-6">
+                                <span class="text-xs font-mono text-emerald-400"># THESIS RECOMMENDATION</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px]">VERIFIED LOGIC</span>
+                            </div>
+
+                            <blockquote class="text-sm text-slate-300 italic leading-relaxed mb-6">
+                                "GRU is strongly recommended for on-edge IoT microcontrollers. While LSTM achieved slightly lower regression error (RMSE 17.76 vs 18.19), GRU consumes 6x less RAM (5.91 MB) and delivers superior PM10 ISPU classification accuracy (85.30%)."
+                            </blockquote>
+
+                            <div class="space-y-3 font-mono text-xs text-slate-300">
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Data Acquisition:</span>
+                                    <span>Primary IoT (1-min interval)</span>
+                                </div>
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Preprocessing:</span>
+                                    <span>Min-Max Scaler + Gaussian Noise</span>
+                                </div>
+                                <div class="flex justify-between py-1.5 border-b border-navy-800">
+                                    <span class="text-slate-400">Sequence Window:</span>
+                                    <span>10 Timesteps (Look-back)</span>
+                                </div>
+                                <div class="flex justify-between py-1.5">
+                                    <span class="text-slate-400">Optimization:</span>
+                                    <span>Epoch 50, Batch 64, LR 0.001</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-navy-800 flex items-center justify-between text-xs text-slate-400">
+                            <span>Author: Jansen M. B. Sianipar</span>
+                            <span class="font-mono">Graduated 2026</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Project 2: VINIX7 INTERNSHIP -->
+            <div class="bg-slatebg border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-sm">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-steel-500/10 text-steel-600 border border-steel-500/20 text-[11px] font-mono font-semibold">Internship Experience</span>
+                            <span class="text-xs text-slate-500">Vinix7 • Kota Cimahi</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-navy-900">
+                            Exploratory Data Analysis & Business Predictive Modeling
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Assisted senior data science teams in data exploration, dataset preprocessing, and data preparation for baseline ML modeling using Python. Authored systematic experimental logs and presented periodic analytical finding reports to support strategic business decisions.
+                        </p>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Exploratory Data Analysis</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Data Cleaning</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Machine Learning</span>
+                            <span class="px-2 py-0.5 bg-white border border-slate-200 rounded text-slate-700 text-xs font-mono">Analytical Reporting</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-4 bg-white p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <div class="text-xs font-bold text-navy-900 uppercase tracking-wider font-mono">Key Internship Impact</div>
+                        <ul class="space-y-2 text-xs text-slate-600">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Prepared structured data pipelines for enterprise pattern analysis.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Documented experiment iterations systematically for reproducible research.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5"></i>
+                                <span>Collaborated directly with cross-functional technical teams.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE LIVE DEMO (CHART.JS DATA VISUALIZER) -->
+    <section id="live-demo" class="py-16 md:py-20 bg-navy-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 text-xs font-mono font-semibold mb-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        Interactive Data Visualization
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white">Thesis Model Forecasting Benchmark</h2>
+                    <p class="text-slate-400 text-sm mt-1">Real test-set excerpt comparison: Actual IoT PMS5003T vs LSTM vs GRU Predictions</p>
+                </div>
+
+                <!-- Parameter Toggle Controls -->
+                <div class="flex items-center gap-2 mt-4 md:mt-0 bg-navy-800 p-1.5 rounded-xl border border-navy-700">
+                    <button id="btn-pm25" onclick="switchData('pm25')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm">
+                        PM2.5 Parameter
+                    </button>
+                    <button id="btn-pm10" onclick="switchData('pm10')" class="px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white">
+                        PM10 Parameter
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chart Container -->
+            <div class="bg-navy-800 rounded-2xl p-4 sm:p-6 border border-navy-700 shadow-2xl">
+                <div class="h-72 sm:h-96 w-full">
+                    <canvas id="forecastChart"></canvas>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 pt-6 border-t border-navy-700/60 text-xs">
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-slate-200"></div>
+                        <div>
+                            <span class="text-slate-400 block">Actual Data</span>
+                            <span class="text-white font-medium">Ground Truth Sensor Readings</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-steel-500"></div>
+                        <div>
+                            <span class="text-slate-400 block">LSTM Prediction</span>
+                            <span class="text-white font-medium">Best Regression (RMSE: 17.76)</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-navy-900/60 p-3 rounded-xl border border-navy-700">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                        <div>
+                            <span class="text-slate-400 block">GRU Prediction</span>
+                            <span class="text-white font-medium">Best Edge Memory (RAM: 5.91MB)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION TIMELINE -->
+    <section id="experience" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Experience Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-steel-500/10 text-steel-600 flex items-center justify-center font-bold">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-navy-900">Work Experience</h2>
+                            <p class="text-slate-500 text-xs">Practical Data Science Background</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 relative pl-6 border-l-2 border-slate-200">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-steel-600 border-4 border-white"></div>
+                            <div class="bg-slatebg p-5 rounded-2xl border border-slate-200">
+                                <div class="flex justify-between items-start flex-wrap gap-2">
+                                    <div>
+                                        <h3 class="font-bold text-navy-900 text-base">Junior Data Scientist</h3>
+                                        <span class="text-xs font-semibold text-steel-600">Vinix7</span>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded bg-white text-slate-600 text-xs font-mono font-medium border border-slate-200">
+                                        Sept 2024 - Nov 2024
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Kota Cimahi, Jawa Barat, Indonesia</p>
+                                <ul class="mt-3 space-y-1.5 text-xs text-slate-600 list-disc list-inside">
+                                    <li>Explored dataset distributions and executed thorough cleaning pipelines using Python.</li>
+                                    <li>Supported team in implementing baseline ML algorithms for business pattern recognition.</li>
+                                    <li>Documented research experiments and presented findings periodically to senior engineering staff.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-navy-900">Education Background</h2>
+                            <p class="text-slate-500 text-xs">Academic Foundation</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-8 relative pl-6 border-l-2 border-slate-200">
+                        <!-- Item 1 -->
+                        <div class="relative">
+                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-white"></div>
+                            <div class="bg-slatebg p-5 rounded-2xl border border-slate-200">
+                                <div class="flex justify-between items-start flex-wrap gap-2">
+                                    <div>
+                                        <h3 class="font-bold text-navy-900 text-base">Bachelor of Computer Science (S.Kom)</h3>
+                                        <span class="text-xs font-semibold text-emerald-600">Universitas Nurtanio Bandung</span>
+                                    </div>
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-700 text-xs font-mono font-bold">
+                                        GPA: 3.68 / 4.00
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Informatics Engineering Major • Graduated 2026</p>
+                                <p class="mt-3 text-xs text-slate-600 leading-relaxed">
+                                    <strong>Thesis Focus:</strong> Deep Learning Time-Series Prediction for Air Quality Trends comparing LSTM vs GRU algorithms with Hyperparameter Grid Search Optimization.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+    <section class="py-16 bg-slatebg border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <h2 class="text-xs font-mono font-semibold text-steel-600 uppercase tracking-widest">Credentials</h2>
+                <p class="text-2xl font-bold text-navy-900 mt-1">Certifications & Language Proficiency</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Cert 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-steel-500/10 text-steel-600 flex items-center justify-center font-bold">
+                                <i data-lucide="award" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">2022 - 2026</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">Data Analyst Essentials</h3>
+                        <p class="text-xs text-slate-600 mt-1">Cisco Networking Academy</p>
+                        <p class="text-xs text-slate-500 mt-2">Data preprocessing, Python analytics, data visualization fundamentals.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Verified Credential</span>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-navy-900/10 text-navy-900 flex items-center justify-center font-bold">
+                                <i data-lucide="shield" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">Feb 2026 - Feb 2028</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">Ethical Hacker</h3>
+                        <p class="text-xs text-slate-600 mt-1">Cisco Networking Academy</p>
+                        <p class="text-xs text-slate-500 mt-2">Cybersecurity fundamentals, network traffic analysis & data protection.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Active Certification</span>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+                                <i data-lucide="languages" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-[11px] font-mono text-slate-400">Jun 2026 - Jun 2028</span>
+                        </div>
+                        <h3 class="font-bold text-navy-900 text-base mt-4">TOEFL ITP Prediction Test</h3>
+                        <p class="text-xs text-slate-600 mt-1">BTB English Course</p>
+                        <p class="text-xs text-slate-500 mt-2">Professional English listening, grammar structure, and technical reading comprehension.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1.5 text-xs text-emerald-600 font-semibold">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i>
+                        <span>Proficient Working Level</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto bg-navy-900 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
+                    <div>
+                        <span class="text-xs font-mono text-steel-500 uppercase tracking-widest">Get In Touch</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Ready to discuss data roles?</h2>
+                        <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                            I am actively seeking full-time opportunities as a <strong>Data Scientist</strong> or <strong>Data Analyst</strong>. Feel free to contact me via email or LinkedIn.
+                        </p>
+
+                        <div class="mt-6 space-y-3 text-xs">
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i data-lucide="mail" class="w-4 h-4 text-steel-500"></i>
+                                <span>jansensianipar41947@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i data-lucide="phone" class="w-4 h-4 text-steel-500"></i>
+                                <span>+62 851-6957-3716</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-steel-500"></i>
+                                <span>Bandung / Cimahi, Jawa Barat, Indonesia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Simulation -->
+                    <div class="bg-navy-800 p-6 rounded-2xl border border-navy-700">
+                        <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Your Name</label>
+                                <input type="text" required placeholder="Recruiter / Hiring Manager" class="w-full px-3 py-2 rounded-lg bg-navy-900 border border-navy-700 text-white text-xs focus:outline-none focus:border-steel-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Work Email</label>
+                                <input type="email" required placeholder="hr@company.com" class="w-full px-3 py-2 rounded-lg bg-navy-900 border border-navy-700 text-white text-xs focus:outline-none focus:border-steel-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+                                <textarea rows="3" required placeholder="Let's schedule an interview..." class="w-full px-3 py-2 rounded-lg bg-navy-900 border border-navy-700 text-white text-xs focus:outline-none focus:border-steel-500 resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-2.5 rounded-lg bg-steel-600 hover:bg-steel-500 text-white text-xs font-semibold transition-all">
+                                Send Direct Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-slatebg border-t border-slate-200 text-slate-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                © 2026 Jansen Marcell Brian Sianipar, S.Kom. All rights reserved.
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#hero" class="hover:text-slate-800">Back to Top</a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-slate-800">LinkedIn</a>
+                <a href="https://github.com" target="_blank" class="hover:text-slate-800">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: THESIS FULL CASE STUDY -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-navy-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl custom-scrollbar relative">
+            <button onclick="closeProjectModal()" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <span class="px-2.5 py-1 rounded bg-navy-900 text-white text-[11px] font-mono">Detailed S-1 Thesis Breakdown</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-navy-900 mt-2">
+                Comparative Analysis of LSTM vs GRU with Hyperparameter Optimization for Air Pollution Trend Prediction
+            </h3>
+
+            <div class="mt-6 space-y-6 text-sm text-slate-600 leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">1. Background & Problem Statement</h4>
+                    <p>
+                        Air pollution from campus motor vehicle movements triggers extreme micro-scale particulate fluctuations (PM2.5 & PM10). Standard macro government monitoring stations cannot capture these localized spikes in real-time. This study built a custom IoT acquisition node (NodeMCU ESP8266 + PMS5003T laser sensor) transmitting data at 1-minute intervals to ThingSpeak cloud storage.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">2. Methodology & Preprocessing Pipeline</h4>
+                    <ul class="list-disc list-inside space-y-1 text-xs">
+                        <li><strong>Data Cleaning:</strong> Outlier removal for readings >300 µg/m³ (eliminating electrical hardware glitches).</li>
+                        <li><strong>Data Augmentation:</strong> Solved ISPU class imbalance by integrating peer data and applying Gaussian Noise injection & local linear interpolation (reaching 3,557 balanced rows).</li>
+                        <li><strong>Sequencing:</strong> Formed 3D sequential sliding windows [samples, 10 timesteps, 2 features].</li>
+                        <li><strong>Hyperparameter Tuning:</strong> Exhaustive Grid Search over Epochs {50, 100} and Batch Sizes {32, 64}.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slatebg p-4 rounded-xl border border-slate-200">
+                    <h4 class="font-bold text-navy-900 text-sm mb-2">3. Quantitative Evaluation Summary</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
+                        <div>
+                            <span class="text-slate-500 block">LSTM Model (50 Epochs, 64 Batch):</span>
+                            <span class="text-navy-900 font-bold">• RMSE: 17.7647 µg/m³</span><br>
+                            <span class="text-navy-900 font-bold">• MAE: 10.1312 µg/m³</span><br>
+                            <span class="text-slate-500">• Test Inference RAM: 34.77 MB</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 block">GRU Model (50 Epochs, 64 Batch):</span>
+                            <span class="text-navy-900 font-bold">• RMSE: 18.1988 µg/m³</span><br>
+                            <span class="text-navy-900 font-bold">• PM10 ISPU Acc: 85.30% (F1: 85.37%)</span><br>
+                            <span class="text-emerald-600 font-bold">• Test Inference RAM: 5.91 MB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-navy-900 text-base mb-1">4. Practical Recommendation for HR & Tech Teams</h4>
+                    <p>
+                        Although LSTM yields slightly lower regression error, <strong>GRU is definitively recommended for edge deployment</strong> on NodeMCU ESP8266 due to its 6x lower memory footprint (5.91 MB vs 34.77 MB) preventing Out-of-Memory (OOM) system crashes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-200 flex justify-end">
+                <button onclick="closeProjectModal()" class="px-5 py-2 rounded-xl bg-navy-900 text-white text-xs font-semibold">
+                    Close Case Study
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CV DOWNLOAD SIMULATOR -->
+    <div id="cv-modal" class="fixed inset-0 z-50 hidden bg-navy-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-center">
+            <button onclick="closeCvModal()" class="absolute top-6 right-6 p-2 rounded-full hover:bg-slate-100 text-slate-500">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-12 h-12 rounded-2xl bg-steel-500/10 text-steel-600 flex items-center justify-center mx-auto mb-4">
+                <i data-lucide="file-badge" class="w-6 h-6"></i>
+            </div>
+
+            <h3 class="text-xl font-bold text-navy-900">Download ATS Resume</h3>
+            <p class="text-slate-600 text-xs mt-2">
+                CV_ATS_JANSEN MARCELL BRIAN SIANIPAR.pdf
+            </p>
+
+            <div class="bg-slatebg p-4 rounded-xl border border-slate-200 my-6 text-left text-xs space-y-2 text-slate-600 font-mono">
+                <div class="flex justify-between">
+                    <span>Format:</span>
+                    <span class="font-bold text-navy-900">ATS Compliant PDF</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Target Roles:</span>
+                    <span class="font-bold text-navy-900">Data Scientist / Analyst</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>GPA:</span>
+                    <span class="font-bold text-emerald-600">3.68 (S.Kom)</span>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <button onclick="triggerCvDownload()" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-steel-600 text-white text-xs font-semibold shadow-md transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>Confirm Download PDF</span>
+                </button>
+                <button onclick="closeCvModal()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR CHART & INTERACTION -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modals Logic
+        function openProjectModal() {
+            document.getElementById('project-modal').classList.remove('hidden');
+        }
+        function closeProjectModal() {
+            document.getElementById('project-modal').classList.add('hidden');
+        }
+        function openCvModal() {
+            document.getElementById('cv-modal').classList.remove('hidden');
+        }
+        function closeCvModal() {
+            document.getElementById('cv-modal').classList.add('hidden');
+        }
+        function triggerCvDownload() {
+            alert('CV ATS Jansen Marcell Brian Sianipar, S.Kom. successfully initialized for download.');
+            closeCvModal();
+        }
+
+        // Contact Form Logic
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            alert('Thank you! Your message has been received. Jansen will contact you shortly.');
+            e.target.reset();
+        }
+
+        // CHART.JS IMPLEMENTATION (Test Set Excerpt)
+        const timeLabels = ['13:40', '13:41', '13:42', '13:43', '13:44', '13:45', '13:46', '13:47', '13:48', '13:49'];
+        
+        const chartDataSets = {
+            pm25: {
+                actual: [78.0, 76.0, 35.0, 38.0, 41.0, 66.0, 70.0, 71.0, 84.0, 84.0],
+                lstm:   [84.8, 83.0, 81.0, 50.9, 41.2, 39.2, 50.3, 60.2, 67.8, 78.9],
+                gru:    [85.3, 83.5, 81.7, 51.8, 41.9, 39.2, 52.1, 57.7, 63.8, 76.1]
+            },
+            pm10: {
+                actual: [86.0, 84.0, 80.0, 77.0, 75.0, 75.0, 79.0, 77.0, 78.0, 78.0],
+                lstm:   [88.2, 85.1, 82.3, 78.9, 76.2, 74.8, 77.5, 76.8, 77.2, 77.9],
+                gru:    [87.9, 84.8, 81.9, 78.1, 75.9, 75.1, 78.1, 77.1, 77.8, 78.2]
+            }
+        };
+
+        let currentChart = null;
+
+        function initChart(param = 'pm25') {
+            const ctx = document.getElementById('forecastChart').getContext('2d');
+            
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: timeLabels,
+                    datasets: [
+                        {
+                            label: 'Actual Sensor (Ground Truth)',
+                            data: chartDataSets[param].actual,
+                            borderColor: '#E2E8F0',
+                            backgroundColor: '#E2E8F0',
+                            borderWidth: 2,
+                            pointRadius: 4,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'LSTM Model Prediction',
+                            data: chartDataSets[param].lstm,
+                            borderColor: '#3B82F6',
+                            backgroundColor: '#3B82F6',
+                            borderWidth: 2.5,
+                            borderDash: [4, 4],
+                            pointRadius: 3,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'GRU Model Prediction',
+                            data: chartDataSets[param].gru,
+                            borderColor: '#10B981',
+                            backgroundColor: '#10B981',
+                            borderWidth: 2.5,
+                            pointRadius: 3,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false // Using custom HTML legend below
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: '#0F172A',
+                            titleFont: { family: 'JetBrains Mono', size: 12 },
+                            bodyFont: { family: 'Inter', size: 12 },
+                            padding: 10,
+                            borderColor: '#334155',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                            ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 11 } }
+                        },
+                        y: {
+                            grid: { color: 'rgba(51, 65, 85, 0.4)' },
+                            ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 11 } },
+                            title: {
+                                display: true,
+                                text: 'Concentration (µg/m³)',
+                                color: '#94A3B8',
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function switchData(param) {
+            const btn25 = document.getElementById('btn-pm25');
+            const btn10 = document.getElementById('btn-pm10');
+
+            if (param === 'pm25') {
+                btn25.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm";
+                btn10.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white";
+            } else {
+                btn10.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all bg-steel-600 text-white shadow-sm";
+                btn25.className = "px-4 py-1.5 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white";
+            }
+            initChart(param);
+        }
+
+        // Window Load
+        window.onload = function() {
+            initChart('pm25');
+        };
+    </script>
+</body>
+</html>
